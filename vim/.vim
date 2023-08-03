@@ -1,0 +1,1 @@
+/home/takumi/vim_package/vim

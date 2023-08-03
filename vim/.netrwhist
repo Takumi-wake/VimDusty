@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/takumi/me/rust/data_type'
+let g:netrw_dirhist_6='/home/takumi/me/rust/data_type/src'
+let g:netrw_dirhist_5='/home/takumi/me/kernel/linux-4.19.198'
+let g:netrw_dirhist_4='/home/takumi/self_test/python'
+let g:netrw_dirhist_3='/home/takumi/work/esp32_opensource/miio_project/main'
+let g:netrw_dirhist_2='/home/takumi/work/esp32_opensource/miio_project'
+let g:netrw_dirhist_1='/home/takumi/work/esp32_opensource'
