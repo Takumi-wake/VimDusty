@@ -74,12 +74,17 @@ set softtabstop=4        " 设置4个空格为制表符
 set smarttab             " 在行和段开始处使用制表符
 "set nowrap               " 禁止折行
 set wrap                 " 设置自动折行
-set backspace=2          " 使用回车键正常处理indent,eol,start等
-"set list listchars=tab:>-,trail:-,space:·    "制表符和空格以及行尾空格显示
-"set nolist
+set backspace=2          " 使用回车键正常处理indent,eol,start等"
+
+"创建一个新的 MyTabSpace 组,并设置它的颜色
+highlight MyTabSpace guifg=darkgrey ctermfg=darkgrey
+" 指定tab字符和空格的颜色组为MyTabSpace,不同字符串之间用|隔开,要使用\|转义.
+match MyTabSpace /\t\| /
+set list listchars=tab:→\ ,trail:-,space:·    "制表符和空格以及行尾空格显示
+set nolist
 
 " 自动去除尾行空格和tab
-function RemoveTrailingWhitespace()
+function! RemoveTrailingWhitespace()
     if &ft != "diff"
         let b:curcol = col(".")
         let b:curline = line(".")
@@ -256,6 +261,10 @@ Plugin 'mhinz/vim-startify'
 
 " 自动补全插件
 Plugin  'ycm-core/YouCompleteMe'
+
+" Highlight several words in different colors simultaneously
+" something went wrong! bad
+" Plugin 'inkarkat/vim-mark'
 
 " tabnine补全插件,替换youcompleteme
 " Plugin 'codota/tabnine-vim'
@@ -536,6 +545,7 @@ let g:tagbar_type_go = {
 " ==============ctrlp.vim=========================
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = '0'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
@@ -633,7 +643,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 "autocomment {
-function AddFileHead()
+function! AddFileHead()
     call append(0, "/*******************************************************************************")
     call append(1, "           Copyright (C), 2014-2015,  Co., Ltd.")
     call append(2, " FileName    : ".expand("%:t"))
@@ -651,7 +661,7 @@ function AddFileHead()
     call append(13, "#endif")
 endfunction
 
-function AddFuncHead()
+function! AddFuncHead()
     let start = line(".")
     call append(start, "/*******************************************************************************")
     call append(start + 1, " Function name : ")
